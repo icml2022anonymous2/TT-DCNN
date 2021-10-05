@@ -25,7 +25,7 @@ Here is a visualisation of 1 block of 2D-CNN: the first layer has 3 filters with
 ## Building
 
 The code needs python >= 3.7, and  has only been tested on Ubuntu 18.04.2 LTS. The
-code is known to work with pytorch 1.5.0.
+code is known to work with pytorch 1.5.0. Please insatll the requirements.
 
 [GANAK](https://github.com/meelgroup/ganak) is the Exact Model Counter used in
 this work. Please install it in the main path of the repo.
@@ -34,17 +34,19 @@ this work. Please install it in the main path of the repo.
 
 The pretrained
 models and truth tables can be downloaded [here](https://drive.google.com/drive/folders/1vso485OSVgIuCHxzmOK2hLAWCNHcCluR?usp=sharing).
-To run the verifier:
+This command is very memory comsumming, please make sure that you have at least 15GB of RAM free before starting the experiment.
+To run the SAT solver verifier for the first 1K samples:
 
 ```
-# verifying MNIST high noise without filtering
-python3 evaluation_general.py --modeltoeval normal --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
 
 # verifying MNIST high noise without filtering
-python3 evaluation_general.py --modeltoeval filtered --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
+python3 evaluation_general_MNIST.py --attack_eps_ici 0.3 --modeltoeval normal --path_exp ../NN2SAT_ICLR/res_paper_final/mnist_high_noise/
+
+# verifying MNIST high noise with filtering
+python3 evaluation_general_MNIST.py --attack_eps_ici 0.3 --modeltoeval filtered --path_exp ../NN2SAT_ICLR/res_paper_final/mnist_high_noise/
 
 # verifying CIFAR10 high noise without filtering
-python3 evaluation_general.py --modeltoeval normal --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
+python3 evaluation_general_CIFAR10.py --attack_eps_ici 8 --modeltoeval normal --path_exp ../NN2SAT_ICLR/res_paper_final/cifar10_high_noise/
 
 ```
 To run the MaxSAT solver:
@@ -52,6 +54,7 @@ To run the MaxSAT solver:
 ```
 # verifying MNIST high noise without filtering
 python3 evaluation_general.py --modeltoeval normal --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
+
 
 
 ```
