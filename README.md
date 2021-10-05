@@ -37,12 +37,23 @@ models and truth tables can be downloaded [here](https://drive.google.com/drive/
 To run the verifier:
 
 ```
-# verifying without filtering
+# verifying MNIST high noise without filtering
 python3 evaluation_general.py --modeltoeval normal --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
 
-# verifying with filtering
+# verifying MNIST high noise without filtering
 python3 evaluation_general.py --modeltoeval filtered --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
-```
 
+# verifying CIFAR10 high noise without filtering
+python3 evaluation_general.py --modeltoeval normal --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
+
+```
+To run the MaxSAT solver:
+
+```
+# verifying MNIST high noise without filtering
+python3 evaluation_general.py --modeltoeval normal --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
+
+
+```
 
 
