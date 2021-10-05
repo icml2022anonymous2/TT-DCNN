@@ -44,21 +44,21 @@ def load_models_binary( args, path_save_model, device):
         biass.append(bias.detach().cpu().numpy())
     bias = torch.Tensor(np.mean(biass, axis = 0))
     scale = np.mean(scales)
-    print(scale, bias)
+    #print(scale, bias)
     #coef = args.coef
     coef_scale = scale#.detach().clone().item()
     if coef_scale>1:
         coef = 100 #int(round(100/coef_scale))
     elif 1>coef_scale:
         coef = 100 #int(round(10/coef_scale))
-    print(coef)
+    #print(coef)
     Wbin = model_train.features[feature_pos - 1].weight_bin.data
     biais = F.relu_(-Wbin.view(Wbin.size(0), -1)).sum(dim=1).cpu().clone().detach().numpy()
     Wbin2 = 1.0 * Wbin.cpu() * (coef * scale).round()#).cpu().clone().detach().numpy()
     biais2 = 1.0 * biais * (coef * scale) + 1.0 * view(
         (coef * bias)).cpu().clone().detach().numpy()
 
-    print(np.unique(Wbin2))
+    #print(np.unique(Wbin2))
 
     #Wmask = model_train.features[feature_pos - 1].weight_mask.detach().clone().numpy()
     #Wbin3 = np.zeros((Wbin2.shape[0], Wbin2.shape[1]))
