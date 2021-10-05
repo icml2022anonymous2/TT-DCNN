@@ -43,7 +43,7 @@ eval:
   coef_mul: 100
 
 get_exp:
-  path_exp: RES_CLOUD/mnist_pad_0.7/
+  path_exp: ./res_paper_final/mnist_high_noise/
   #./RES_CLOUD/24_48_max_stride_3channel/
   filter_occurence: 0
   filtre_exp: Yes
