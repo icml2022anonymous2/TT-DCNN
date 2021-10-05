@@ -24,7 +24,7 @@ Here is a visualisation of 1 block of 2D-CNN: the first layer has 3 filters with
 
 ## Building
 
-The code needs python >= 3.7, and  has only been tested on Ubuntu20. The
+The code needs python >= 3.7, and  has only been tested on Ubuntu 18.04.2 LTS. The
 code is known to work with pytorch 1.5.0.
 
 [GANAK](https://github.com/meelgroup/ganak) is the exact SAT solver used in
