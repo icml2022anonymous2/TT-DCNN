@@ -52,7 +52,7 @@ get_exp:
 
 eval_with_sat:
   modeltoeval: normal # normal - prune - filtered - prune_filtered
-  mode_eval: verification #evaluation_robuste #evaluation #verification #verification_vitesse
+  mode_eval: verification_vitesse #evaluation_robuste #evaluation #verification #verification_vitesse
   encoding_type: 0
   number_ici: 0
   attack_eps_ici: 0.3
