@@ -89,6 +89,9 @@ path_save_model_prunning = args.path_exp + "prune/"
 if config_general.dataset=="CIFAR10":
     args.attack_eps_ici = args.attack_eps_ici / 255
 
+if "cifar10_high_noise" in args.path_exp:
+    args.strides = [3,2]
+
 
 device = torch.device("cuda:" + str(args.device_ids[0]) if torch.cuda.is_available() else "cpu")
 
