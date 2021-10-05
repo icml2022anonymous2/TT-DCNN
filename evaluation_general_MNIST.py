@@ -19,7 +19,7 @@ from src.utils.config import str2bool, two_args_str_int, two_args_str_float, str
 
 
 config_general = Config(path="config/")
-config_general.dataset=="MNIST"
+config_general.dataset="MNIST"
 config = Config(path="config/mnist/")
 
 parser = argparse.ArgumentParser()
