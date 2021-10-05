@@ -18,27 +18,11 @@ from src.utils.config import str2bool, two_args_str_int, two_args_str_float, str
 
 
 
-
-
+config_general = Config(path="config/")
+config_general.dataset=="MNIST"
+config = Config(path="config/mnist/")
 
 parser = argparse.ArgumentParser()
-
-
-parser.add_argument("--path_exp", default="./cifar10_high_noise/")
-
-args0 = parser.parse_args()
-
-if "cifar10" in args0.path_exp:
-    
-    config_general = Config(path="config/")
-    config_general.dataset = "CIFAR10"
-    if config_general.dataset=="CIFAR10":
-        config = Config(path="config/cifar10/")
-else:
-    config_general = Config(path="config/")
-    config_general.dataset = "MNIST"
-    if config_general.dataset=="MNIST":
-        config = Config(path="config/mnist/")
 
 parser.add_argument("--dataset", default=config_general.dataset)
 parser.add_argument("--type", default=config_general.type)
@@ -76,7 +60,7 @@ parser.add_argument("--batch_size_test", default=config.eval.batch_size_test, ty
 parser.add_argument("--pruning", default=config.eval.pruning, type=str2bool)
 parser.add_argument("--coef_mul", default=config.eval.coef_mul, type=two_args_str_int)
 
-
+parser.add_argument("--path_exp", default=config.get_exp.path_exp)
 parser.add_argument("--filter_occurence", default=config.get_exp.filter_occurence, type=two_args_str_int)
 parser.add_argument("--proportion", default=config.get_exp.proportion, type=two_args_str_float)
 parser.add_argument("--proba", default=config.get_exp.proba, type=two_args_str_float)
