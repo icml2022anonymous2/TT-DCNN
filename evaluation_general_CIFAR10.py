@@ -284,10 +284,12 @@ with torch.no_grad():
         elif int(args.coef_mul) * (int(args.number_ici) + 1) < indexicicici:
             print("Number of sample verified: ", correct, "Number of time-out: ", timeout, "Number of clauses per sample: ", np.mean(nbre_clausetot),  "Number of variables per sample: ",np.mean(nbre_varstot))
             if len(padvtot)>0:
-                print(np.mean(padvtot))
+                print("P(adv)", np.mean(padvtot))
             break
 #print(correct, timeout)
 
+print()
+print()
 
 namelog = args.path_exp + "ACC_"+str(args.number_ici) + '_'+str(args.coef_mul) +  '_'+str(args.type)+'_'+str(args.attack_eps_ici) + '_'+str(args.modeltoeval)+'_'+str(args.mode_eval) + '_' + str(args.ratio_distrib_maxsat) + '_accuracy_final.txt'
 
