@@ -52,10 +52,8 @@ python3 evaluation_general_CIFAR10.py --attack_eps_ici 8 --modeltoeval normal --
 To run the MaxSAT solver:
 
 ```
-# verifying MNIST high noise without filtering
-python3 evaluation_general.py --modeltoeval normal --path_exp ./path_to/mnist_high_noise/ --attack_eps_ici 0.3 
-
-
+# verifying CIFAR10 high noise without filtering
+python3 evaluation_general_CIFAR10.py  --attack_eps_ici 8  --modeltoeval normal --path_exp ../NN2SAT_ICLR/res_paper_final/cifar10_high_noise/ --mode_eval verification_maxsat2
 
 ```
 
