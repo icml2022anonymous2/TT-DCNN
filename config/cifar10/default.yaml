@@ -40,7 +40,7 @@ eval:
   coef_mul: 100
 
 get_exp:
-  path_exp: ./RES_CLOUD/cifar10-s3-adv8-cbd3/
+  path_exp: ./res_paper_final/cifar10_high_noise/
   #./RES_CLOUD/24_48_max_stride_3channel/
   #./RES_CLOUD/24_48_max_stride_3channel/
   filter_occurence: 0
