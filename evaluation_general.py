@@ -26,7 +26,9 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("--path_exp", default="./cifar10_high_noise/")
 
-if "cifar10" in parser.path_exp:
+args0 = parser.parse_args()
+
+if "cifar10" in args0.path_exp:
     
     config_general = Config(path="config/")
     config_general.dataset = "CIFAR10"
