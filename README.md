@@ -1,21 +1,23 @@
-# Truth-Table-Deep-Convolutional-Neural-Network
+# TT-DCNN
 
-This repository is the implementation Reproducibility part for submitted paper _Truth Table Deep Convolutional Neural Network, A New SAT-Encodable Architecture - Application To Complete Robustness_
+This repository is the implementation Reproducibility part for submitted paper _Truth-Table Deep Convolutional Neural Network: A New Architecture Encodable By Design Into SAT Formulas_
 
-In this work, we introduce Truth Table Deep Convolutional Neural Networks (TT-DCNNs), **a new family of SAT-encodable models featuring real-valued weights and real intermediate values as well as a highly interpretable conversion method.** The TT-DCNN architecture enables for the **first time all the logical classification rules to be extracted from a performant neural network** which can be then easily interpreted by anyone familiar with the domain. Therefore, this allows **integrating human knowledge in post-processing as well as enumerating all possible inputs/outputs prior to deployment in production**. We believe our new architecture paves the way between eXplainability AI (XAI) and formal verification. 
+With the expanding role of neural networks, the need for formal verification of their behavior and human post-processing has become critical. In the recent years, it was established that Binary Neural Networks (BNNs) have an equivalent representation in boolean logic and can be formally analyzed using logical reasoning tools such as SAT solvers. However, to date, only BNNs can be transformed into a SAT formula. In this work, we introduce Truth Table Deep Convolutional Neural Networks (TT-DCNNs), a new family of SAT-encodable models featuring for the first time real-valued weights. Furthermore, it admits, by construction, some valuable conversion features including post-tuning and tractability in the robustness verification setting. The latter property leads to a more compact SAT symbolic encoding than BNNs. This enables the use of a general SAT solver making property verification easier.  We demonstrate that TT-DCNNs outperform the verifiable accuracy of BNNs with a comparable computation time. This novel real-valued network has general applications and could constitute a practical response to the rising need for functional formal verification.
+
+![screen-gif](./gif/animatedGIF.gif)
+
 
 Our main contributions:
 
-1. First, we define a new family of real-valued Deep Convolutional Neural Networks (DCNN) that can be encoded into SAT formulas: Truth Table Deep Convolutional Neural Network (TT-DCNN). Our TT-DCNN leverages its model formulation in the form of a truth table to allow weights and certain intermediate values to be real. To the best of our knowledge, this is the first method to encode a real-valued DCNN into SAT. For the first time, we can extract all the logic classification rules from a subfamily of DCNNs which allows a bridge between XAI and formal verification, while achieving sufficient natural accuracy for practical use. Indeed, the nature of the SAT conversion between TT-DCNN and BNN is intrinsically different: our method relies upon giving one SAT expression per 2D-CNN filter instead of one SAT expression per neuron. This global interpretability method is in sharp contrast with the previous limited BNNs and local DNNs explainability.
+1. First, we define a new family of real-valued Deep Convolutional Neural Networks (DCNN) that can be encoded into SAT formulas: Truth Table Deep Convolutional Neural Network (TT-DCNN). Our TT-DCNN simplifies its 2D-CNN filter formulation in the form of a truth table to allow weights and certain intermediate values to be real. To the best of our knowledge, this is the first method to encode a real-valued DCNN into SAT, while achieving sufficient natural accuracy for practical use. 
 
 2. TT-DCNNs offer two main valuable conversion properties over BNNs. 
 
-a) The first one allows us to integrate human knowledge in the post-processing:  we can now interpret the model inference with simple concepts, which enables to manually modify the 2D-CNN filter activation towards a desired goal. For example, we decided to focus on reducing overfitting and, to this end, we characterize TT-DCNN logic rules resulting from overfitting and propose a filtering approach, which increases the verifiable accuracy without decreasing the natural accuracy 
+(2-a: Post-tuning) The first one allows us to integrate human knowledge in the post-processing: we can now manually modify a DCNN filter activation towards a desired goal. For example, we decided to focus on reducing overfitting and, to this end, we characterize TT-DCNN logic rules resulting from overfitting and propose a filtering approach. The latter increases the verifiable accuracy without decreasing the natural accuracy: +0.43\% and +0.29\% for high noise MNIST and CIFAR10 respectively.
 
-b) The second property is the possibility to compute all possible model inputs/outputs prior to deployment in production. In an adversarial setting, we can assess whether the input noise will propagate to the output. We can therefore disregard filters with no impact on the output. This leads to a lower formulas number of clauses and variables compared to BNNs which allows using generic SAT solvers and exact model counting solvers.
+(2-b: Tractability) The second property enables to compute all possible model inputs/outputs prior to deployment in production. In an adversarial setting, we can assess whether the input noise will propagate to the output. We can therefore disregard filters with no impact on the output. This leads to a lower number of clauses and variables in the SAT formulas compared to BNNs, thus enabling the usage of generic SAT solver. When compared to the BNN/SAT method, our SAT formulas are 5 and 9 times more compact in terms of number of clauses for high noise MNIST and CIFAR10 respectively.
 
-3. We apply our model to complete robustness verification. TT-DCNNs offer a good tradeoff between the state-of-the-art of BNN/SAT method and of real-valued DNN/MILP complete robustness verification methods. This is expected as our network is both real-weighted and SAT-convertible.  Our TT-DCNN model improves the verifiable accuracy by more than 2.5\% for high noise MNIST and by 0.5\% for the high noise of CIFAR10 compared to BNN/SAT method while decreasing the verification time by a factor of 9 for MNIST and 150 for CIFAR10 high noise compared to DNN/MILP methods. 
-
+3. We apply our model to complete robustness verification. TT-DCNNs benefit from the synergy of the state-of-the-art of BNN/SAT method and that of real-valued DNN/MIP complete robustness verification methods. Our model improves the verifiable accuracy by more than 2.5\% for high noise MNIST and by 0.5\% for the high noise of CIFAR10 when compared to BNN/SAT method while decreasing the verification time by a factor of 9 for MNIST and 150 for CIFAR10 high noise when compared to MIP methods. 
 
 
 Here is a visualisation of 1 block of 2D-CNN: the first layer has 3 filters with real-valued weigths and intermediate values, and the second layer has one filter with with real-valued weigths and  binary values.
@@ -27,8 +29,7 @@ Here is a visualisation of 1 block of 2D-CNN: the first layer has 3 filters with
 The code needs python >= 3.7, and  has only been tested on Ubuntu 18.04.2 LTS. The
 code is known to work with pytorch 1.5.0. Please insatll the requirements.
 
-[GANAK](https://github.com/meelgroup/ganak) is the Exact Model Counter used in
-this work. Please install it in the main path of the repo.
+
 
 ## Usage
 
@@ -49,12 +50,6 @@ python3 evaluation_general_MNIST.py --attack_eps_ici 0.3 --modeltoeval filtered 
 python3 evaluation_general_CIFAR10.py --attack_eps_ici 8 --modeltoeval normal --path_exp ../NN2SAT_ICLR/res_paper_final/cifar10_high_noise/
 
 ```
-To run the MaxSAT solver:
 
-```
-# verifying CIFAR10 high noise without filtering
-python3 evaluation_general_CIFAR10.py  --attack_eps_ici 8  --modeltoeval normal --path_exp ../NN2SAT_ICLR/res_paper_final/cifar10_high_noise/ --mode_eval verification_maxsat2
-
-```
 
 
