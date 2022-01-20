@@ -41,13 +41,13 @@ To run the SAT solver verifier for the first 1K samples:
 ```
 
 # verifying MNIST high noise without filtering
-python3 evaluation_general_MNIST.py --attack_eps_ici 0.3 --modeltoeval normal --path_exp ../NN2SAT_ICLR/res_paper_final/mnist_high_noise/
+python3 evaluation_general_MNIST.py --attack_eps_ici 0.3 --modeltoeval normal --path_exp ../res_paper_final/mnist_high_noise/
 
 # verifying MNIST high noise with filtering
-python3 evaluation_general_MNIST.py --attack_eps_ici 0.3 --modeltoeval filtered --path_exp ../NN2SAT_ICLR/res_paper_final/mnist_high_noise/
+python3 evaluation_general_MNIST.py --attack_eps_ici 0.3 --modeltoeval filtered --path_exp ../res_paper_final/mnist_high_noise/
 
 # verifying CIFAR10 high noise without filtering
-python3 evaluation_general_CIFAR10.py --attack_eps_ici 8 --modeltoeval normal --path_exp ../NN2SAT_ICLR/res_paper_final/cifar10_high_noise/
+python3 evaluation_general_CIFAR10.py --attack_eps_ici 8 --modeltoeval normal --path_exp ../res_paper_final/cifar10_high_noise/
 
 ```
 
