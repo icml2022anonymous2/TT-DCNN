@@ -4,7 +4,7 @@ This repository is the implementation Reproducibility part for submitted paper _
 
 With the expanding role of neural networks, the need for formal verification of their behavior and human post-processing has become critical. In the recent years, it was established that Binary Neural Networks (BNNs) have an equivalent representation in boolean logic and can be formally analyzed using logical reasoning tools such as SAT solvers. However, to date, only BNNs can be transformed into a SAT formula. In this work, we introduce Truth Table Deep Convolutional Neural Networks (TT-DCNNs), a new family of SAT-encodable models featuring for the first time real-valued weights. Furthermore, it admits, by construction, some valuable conversion features including post-tuning and tractability in the robustness verification setting. The latter property leads to a more compact SAT symbolic encoding than BNNs. This enables the use of a general SAT solver making property verification easier.  We demonstrate that TT-DCNNs outperform the verifiable accuracy of BNNs with a comparable computation time. This novel real-valued network has general applications and could constitute a practical response to the rising need for functional formal verification.
 
-![screen-gif](./gif/intro_plot2.pdf)
+![screen-gif](./gif/myimg.png)
 
 
 Our main contributions:
